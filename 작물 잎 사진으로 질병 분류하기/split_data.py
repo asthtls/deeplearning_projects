@@ -29,4 +29,17 @@ for cls in classes_list:
         dst = os.path.join(os.path.join(train_dir, cls), fname)
         shutil.copyfile(src, dst)
     
-    
+    # val data
+    val_fnames = fnames[train_size:(val_size + train_size)]
+    print('val size(',cls,'): ', len(val_fnames))
+    for fname in val_fnames:
+        src = os.path.join(path, fname)
+        dst = os.path.join(os.path.join(val_dir, cls), fname)
+        shutil.copyfile(src, dst)
+    # test data
+    test_fnames = fnames[(val_size + train_size):(val_size + train_size + test_size)]
+    print('test size(',cls,'): ', len(test_fnames))
+    for fname in test_fnames:
+        src = os.path.join(path, fname)
+        dst = os.path.join(os.path.join(train_dir, cls), fname)
+        shutil.copyfile(src, dst)
